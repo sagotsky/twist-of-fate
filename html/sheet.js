@@ -7,6 +7,7 @@ var abilities = {
   Agility:['Shoot','Subterfuge','Dodge', 'Acrobatics', 'Drive', 'Legerdemain', 'Blue Collar'],
   Brains:['Knowledge', 'Medicine', 'Science' ,'Academics', 'Language', 'Survival', 'White Collar'],
   Social:['Act', 'Manipulate', 'Meet', 'Scrutinize', 'Culture', 'Etiquette', 'Command'],
+//  Magic:['Earth','Air','Fire','Water'],
 }
 
 //these need padding...
@@ -28,6 +29,17 @@ function getRanks() {
     txt += '  </tr>';
   }
   txt += '</table>';
+  return txt;
+}
+
+function mkRanks(rows, cols) {
+  var txt = '<ul class="rks">';
+  for (var i=0 ; i<rows ; i++) {
+    for (var j=0 ; j<cols ; j++) {
+      txt += '<li> </li>';
+    }
+    txt += '<br />';
+  }
   return txt;
 }
 
@@ -72,8 +84,19 @@ function init() {
 
   // health block
   var txt = '';
-  txt = 'health points';
+  txt = '<div class="ability">Health' + getRanks();
+  txt += 'Armor' + getRanks();
+  txt += '<br />(+HP) (+AR)(+HP) (+AR)(+HP) (+AR)(+HP) (+AR)(+HP) (+AR)';
+  txt += '<br />HP ___ + equipped AR / MAX AR';
+  txt += 'wound threshold = HP + E_AR        ruined threshold = 2xwound';
+  txt += '<ul><li>Head</li><li>Torso</li><li>L. Arm</li><li>R. Arm</li><li>L. Leg</li><li>R. Leg</li></ul>';
+  txt += '</div>';
+  txt += mkRanks(1,5);
   $('#healthandmagic').html(txt);
+  $('#healthandmagic td:even').html('+AR');
+  $('#healthandmagic td:odd').html('+HP');
+
+  //magic
 
   //event handlers
   $('.ranks').click(function() {

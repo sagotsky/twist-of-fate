@@ -151,6 +151,24 @@ td.check {
   /*background: -moz-radial-gradient(6px 50%, circle, #008 0%, #00a 40%, #fff 60%,  #fff 100%);*/
 }
 
+/* alternate way to do ranks */
+ul.rks{
+  list-style-type: circle;
+  float: right;
+  font-size: 10pt;
+  line-height: 120%; /* matches font size below */
+}
+
+ul.rks li {
+  background-color:red;
+}
+ul.rks li:hover {
+  list-style-type: disc;
+  font-size: 120%; /* overcomes circle border */
+}
+
+
+
 input {
   border: 1px transparent solid;
 }
